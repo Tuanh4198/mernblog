@@ -1,0 +1,24 @@
+/* .container {
+  background-color: black;
+}
+
+h1 {
+  color: rgba(238, 190, 58, 0.972);
+}
+a {
+  color: rgba(238, 190, 58, 0.972);
+}
+a:hover {
+  color: rgba(238, 190, 58, 0.972);
+} */
+.title,
+.tagline {
+  text-align: center;
+}
+body {
+  background-image: url("./assets/joanna-kosinska-78uNJt1kPw8-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+}

@@ -1,0 +1,8 @@
+.nav-item > a {
+  color: black;
+  font-weight: 600;
+}
+.nav-item > a:hover {
+  color: dodgerblue;
+  text-decoration: none;
+}
