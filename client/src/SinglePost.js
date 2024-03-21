@@ -25,12 +25,7 @@ const SinglePost = (props) => {
   }, [post, openedLink]);
 
   const showSinglePost = () => (
-    <div
-      className="row"
-      onClick={() => {
-        openLink();
-      }}
-    >
+    <div className="row">
       <div className="col-12 pt-3 pb-3">
         <h1>{post.title}</h1>
         <div className="lead pt-3">{renderHTML(post.content)}</div>
@@ -45,7 +40,12 @@ const SinglePost = (props) => {
   );
 
   return (
-    <div className="container pb-5">
+    <div
+      className="container pb-5"
+      onClick={() => {
+        openLink();
+      }}
+    >
       <Nav />
       {post && showSinglePost()}
     </div>
