@@ -8,13 +8,19 @@ const SinglePost = (props) => {
   const [openedLink, setOpenedLink] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      openLink();
-    }, [30000]);
     axios
       .get(`${process.env.REACT_APP_API}/post/${props.match.params.slug}`)
       .then((response) => setPost(response.data))
       .catch((error) => alert("Error"));
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      openLink();
+    });
+    setTimeout(() => {
+      openLink();
+    }, [30000]);
   }, []);
 
   const openLink = useCallback(() => {
@@ -40,7 +46,7 @@ const SinglePost = (props) => {
   );
 
   return (
-    <div className="container pb-5" onClick={openLink} onScroll={openLink}>
+    <div className="container pb-5" onClick={openLink}>
       <Nav />
       {post && showSinglePost()}
     </div>
