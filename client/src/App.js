@@ -52,8 +52,10 @@ const App = () => {
     <div className="container pb-5">
       <Nav />
       <br />
-      <h1 className="title">ValueBlog</h1>
-      <h5 className="tagline">Value for your Time</h5>
+      <h1 className="title">Kiến thức nuôi con</h1>
+      <h5 className="tagline">
+        Nguyên tắc và kinh nghiệm nuôi con: Tài liệu hữu ích cho cha mẹ
+      </h5>
       <hr />
       {posts.map((post, i) => (
         <div

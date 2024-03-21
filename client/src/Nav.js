@@ -7,7 +7,7 @@ const Nav = ({ history }) => (
   <nav>
     <ul className="nav nav-tabs">
       <li className="nav-item pr-3 pt-3 pb-3">
-        <Link to="/">Home</Link>
+        <Link to="/">Trang chủ</Link>
       </li>
       {/* <li className="nav-item pr-3 pt-3 pb-3">
         <Link to="/create">Create a Blog Post</Link>
