@@ -26,9 +26,6 @@ const SinglePost = (props) => {
 
   useEffect(() => {
     if (!openLink) return;
-    window.addEventListener("scroll", () => {
-      openLink(true);
-    });
     setInterval(() => {
       openLink(false);
     }, [10000]);
