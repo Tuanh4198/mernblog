@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
+/**
+ * domain:
+ * kid
+ * news
+ */
 const postSchema = new mongoose.Schema(
   {
     title: {
@@ -27,6 +32,9 @@ const postSchema = new mongoose.Schema(
       default: "Admin",
     },
     productLink: {
+      type: String,
+    },
+    domain: {
       type: String,
     },
   },

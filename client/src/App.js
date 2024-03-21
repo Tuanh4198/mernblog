@@ -11,7 +11,9 @@ const App = () => {
 
   const fetchPosts = () => {
     axios
-      .get(`${process.env.REACT_APP_API}/posts`)
+      .get(
+        `${process.env.REACT_APP_API}/posts?domain=${process.env.REACT_APP_DOMAIN}`
+      )
       .then((response) => {
         // console.log(response);
         setPosts(response.data);

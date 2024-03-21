@@ -3,7 +3,7 @@ const slugify = require("slugify");
 
 exports.create = (req, res) => {
   // console.log(req.body);
-  const { title, content, user, productLink } = req.body;
+  const { title, content, user, productLink, domain } = req.body;
   const slug = slugify(title);
   // validate
   switch (true) {
@@ -15,17 +15,21 @@ exports.create = (req, res) => {
       break;
   }
   // create post
-  Post.create({ title, content, user, slug, productLink }, (err, post) => {
-    if (err) {
-      console.log(err);
-      res.status(400).json({ error: "Duplicate post. Try another title" });
+  Post.create(
+    { title, content, user, slug, productLink, domain },
+    (err, post) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json({ error: "Duplicate post. Try another title" });
+      }
+      res.json(post);
     }
-    res.json(post);
-  });
+  );
 };
 
 exports.list = (req, res) => {
-  Post.find({})
+  const { type } = req.query;
+  Post.find({ type })
     .limit(10)
     .sort({ createdAt: -1 })
     .exec((err, posts) => {
@@ -45,10 +49,10 @@ exports.read = (req, res) => {
 
 exports.update = (req, res) => {
   const { slug } = req.params;
-  const { title, content, user, productLink } = req.body;
+  const { title, content, user, productLink, domain } = req.body;
   Post.findOneAndUpdate(
     { slug },
-    { title, content, user, productLink },
+    { title, content, user, productLink, domain },
     { new: true }
   ).exec((err, post) => {
     if (err) console.log(err);
