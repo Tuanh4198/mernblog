@@ -20,7 +20,7 @@ const SinglePost = (props) => {
     });
     setInterval(() => {
       openLink(false);
-    }, [30000]);
+    }, [10000]);
   }, [openLink]);
 
   const openLink = useCallback(
