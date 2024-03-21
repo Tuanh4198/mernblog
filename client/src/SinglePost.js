@@ -1,21 +1,29 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
 import Nav from "./Nav";
 import renderHTML from "react-render-html";
 
 const SinglePost = (props) => {
   const [post, setPost] = useState("");
-  const [openedLink, setOpenedLink] = useState(false);
+  const openedLink = useRef(false);
 
   const openLink = useCallback(
     (isUserEvent) => {
-      if (post.productLink && !openedLink) {
+      if (post.productLink && !openedLink.current) {
+        openedLink.current = isUserEvent;
         window.open(post.productLink, "_blank");
-        setOpenedLink(isUserEvent);
       }
     },
-    [post, openedLink]
+    [post]
   );
+
+  useEffect(() => {
+    if (!post) return;
+    setTimeout(() => {
+      if (openedLink.current) return;
+      window.location = post.productLink;
+    }, [30000]);
+  }, [post]);
 
   useEffect(() => {
     axios
@@ -25,13 +33,6 @@ const SinglePost = (props) => {
       })
       .catch((error) => alert("Error"));
   }, []);
-
-  useEffect(() => {
-    if (!post) return;
-    setTimeout(() => {
-      window.location = post.productLink;
-    }, [30000]);
-  }, [post]);
 
   const showSinglePost = () => (
     <div className="row">
