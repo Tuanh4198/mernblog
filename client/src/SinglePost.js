@@ -18,8 +18,8 @@ const SinglePost = (props) => {
   }, []);
 
   const openLink = useCallback(() => {
-    if (post.producLink && !openedLink) {
-      window.open(post.producLink, "_blank");
+    if (post.productLink && !openedLink) {
+      window.open(post.productLink, "_blank");
       setOpenedLink(true);
     }
   }, [post, openedLink]);
@@ -40,12 +40,7 @@ const SinglePost = (props) => {
   );
 
   return (
-    <div
-      className="container pb-5"
-      onClick={() => {
-        openLink();
-      }}
-    >
+    <div className="container pb-5" onClick={openLink}>
       <Nav />
       {post && showSinglePost()}
     </div>
