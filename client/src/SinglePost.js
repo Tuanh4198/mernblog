@@ -16,19 +16,22 @@ const SinglePost = (props) => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      openLink();
+      openLink(true);
     });
-    setTimeout(() => {
-      openLink();
+    setInterval(() => {
+      openLink(false);
     }, [30000]);
-  }, []);
+  }, [openLink]);
 
-  const openLink = useCallback(() => {
-    if (post.productLink && !openedLink) {
-      window.open(post.productLink, "_blank");
-      setOpenedLink(true);
-    }
-  }, [post, openedLink]);
+  const openLink = useCallback(
+    (isUserEvent) => {
+      if (post.productLink && !openedLink) {
+        window.open(post.productLink, "_blank");
+        setOpenedLink(isUserEvent);
+      }
+    },
+    [post, openedLink]
+  );
 
   const showSinglePost = () => (
     <div className="row">
@@ -46,7 +49,7 @@ const SinglePost = (props) => {
   );
 
   return (
-    <div className="container pb-5" onClick={openLink}>
+    <div className="container pb-5" onClick={() => openLink(true)}>
       <Nav />
       {post && showSinglePost()}
     </div>
