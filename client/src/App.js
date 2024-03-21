@@ -20,9 +20,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      window.open("https://shope.ee/2q7CW6JAN4", "_blank");
-    }, 20000);
     fetchPosts();
   }, []);
 
