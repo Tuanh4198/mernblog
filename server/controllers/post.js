@@ -28,8 +28,8 @@ exports.create = (req, res) => {
 };
 
 exports.list = (req, res) => {
-  const { type } = req.query;
-  Post.find({ type })
+  const { domain } = req.query;
+  Post.find({ domain })
     .limit(10)
     .sort({ createdAt: -1 })
     .exec((err, posts) => {
