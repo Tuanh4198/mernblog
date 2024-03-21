@@ -14,15 +14,6 @@ const SinglePost = (props) => {
       .catch((error) => alert("Error"));
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      openLink(true);
-    });
-    setInterval(() => {
-      openLink(false);
-    }, [10000]);
-  }, [openLink]);
-
   const openLink = useCallback(
     (isUserEvent) => {
       if (post.productLink && !openedLink) {
@@ -32,6 +23,16 @@ const SinglePost = (props) => {
     },
     [post, openedLink]
   );
+
+  useEffect(() => {
+    if (!openLink) return;
+    window.addEventListener("scroll", () => {
+      openLink(true);
+    });
+    setInterval(() => {
+      openLink(false);
+    }, [10000]);
+  }, [openLink]);
 
   const showSinglePost = () => (
     <div className="row">
