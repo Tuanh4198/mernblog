@@ -40,7 +40,7 @@ const SinglePost = (props) => {
   );
 
   return (
-    <div className="container pb-5" onClick={openLink}>
+    <div className="container pb-5" onClick={openLink} onScroll={openLink}>
       <Nav />
       {post && showSinglePost()}
     </div>
