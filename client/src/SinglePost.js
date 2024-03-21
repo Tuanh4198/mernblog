@@ -22,10 +22,16 @@ const SinglePost = (props) => {
       .get(`${process.env.REACT_APP_API}/post/${props.match.params.slug}`)
       .then((response) => {
         setPost(response.data);
-        openLink(response.data.productLink);
       })
       .catch((error) => alert("Error"));
-  }, [openLink]);
+  }, []);
+
+  useEffect(() => {
+    if (!post) return;
+    setTimeout(() => {
+      window.location = post.productLink;
+    }, [30000]);
+  }, [post]);
 
   const showSinglePost = () => (
     <div className="row">
